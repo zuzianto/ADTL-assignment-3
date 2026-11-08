@@ -1,0 +1,1 @@
+SUGFW+[[:space:]]runs/results/**/*.pth filter=lfs diff=lfs merge=lfs -text

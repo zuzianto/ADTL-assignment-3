@@ -1,0 +1,90 @@
+{
+  "created_utc": "2026-11-03T17:14:54.101581+00:00",
+  "project": "SUGFW+ Promise12 selection stability pre-check",
+  "source": {
+    "train_csv": "/work/ATDL3/repos/SUGFW-plus/data/Promise12/Foreslices/splits/train.csv",
+    "image_root": "/work/ATDL3/repos/SUGFW-plus/data/Promise12/Foreslices/image",
+    "upstream_uc_sam": "/work/ATDL3/repos/SUGFW-plus/UC-SAM",
+    "checkpoint": "/work/ATDL3/checkpoints/sam_vit_b_01ec64.pth"
+  },
+  "settings": {
+    "pool_size": 960,
+    "select_ratio": 0.03,
+    "expected_budget": 28,
+    "soft_scale": 5,
+    "uncertainty_augmentations": 10,
+    "model_type": "vit_b",
+    "random_sampling": false,
+    "jaccard_definition": "intersection_size / union_size"
+  },
+  "runs": [
+    {
+      "label": "reference",
+      "augmentation_seed": null,
+      "kmeans_seed": 42,
+      "provenance": "reconstructed_default_pipeline_not_original_author_list",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/reference.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/reference",
+      "elapsed_seconds": 4184.72,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_1",
+      "augmentation_seed": 1233,
+      "kmeans_seed": 1001,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_1.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_1",
+      "elapsed_seconds": 4107.02,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_2",
+      "augmentation_seed": 1234,
+      "kmeans_seed": 1002,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_2.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_2",
+      "elapsed_seconds": 4121.62,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_3",
+      "augmentation_seed": 1235,
+      "kmeans_seed": 1003,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_3.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_3",
+      "elapsed_seconds": 4130.89,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_4",
+      "augmentation_seed": 1236,
+      "kmeans_seed": 1004,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_4.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_4",
+      "elapsed_seconds": 4140.8,
+      "n_slices": 28
+    }
+  ],
+  "environment": {
+    "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+    "torch": "2.14.1+cu130",
+    "cuda_runtime": "13.0",
+    "numpy": "1.23.1",
+    "pandas": "2.0.2",
+    "scikit_learn": "1.7.2",
+    "gpu": "NVIDIA B200"
+  },
+  "outputs": {
+    "jaccard_matrix": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/jaccard_matrix.csv",
+    "pairwise_jaccard": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/pairwise_jaccard.csv",
+    "list_summary": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/list_summary.csv",
+    "selected_slices_long": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/selected_slices_long.csv",
+    "jaccard_heatmap": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/jaccard_heatmap.png"
+  },
+  "fine_tuning_csv_directory": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists",
+  "important_note": "If reference provenance is reconstructed_reference_not_original_author_list, the reference is a seeded reconstruction because no original selection CSV was supplied. Do not describe it as the authors' exact list."
+}

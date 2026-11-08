@@ -1,0 +1,389 @@
+{
+  "started_utc": "2026-11-03T19:09:18Z",
+  "work_root": "/work/ATDL3",
+  "selection_run_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z",
+  "selection_run_id": "run_20261103T113007Z",
+  "selection_provenance": [
+    {
+      "label": "reference",
+      "augmentation_seed": null,
+      "kmeans_seed": 42,
+      "provenance": "reconstructed_default_pipeline_not_original_author_list",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/reference.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/reference",
+      "elapsed_seconds": 4184.72,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_1",
+      "augmentation_seed": 1233,
+      "kmeans_seed": 1001,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_1.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_1",
+      "elapsed_seconds": 4107.02,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_2",
+      "augmentation_seed": 1234,
+      "kmeans_seed": 1002,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_2.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_2",
+      "elapsed_seconds": 4121.62,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_3",
+      "augmentation_seed": 1235,
+      "kmeans_seed": 1003,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_3.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_3",
+      "elapsed_seconds": 4130.89,
+      "n_slices": 28
+    },
+    {
+      "label": "rerun_4",
+      "augmentation_seed": 1236,
+      "kmeans_seed": 1004,
+      "provenance": "seeded_rerun",
+      "csv": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/lists/rerun_4.csv",
+      "cache_dir": "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_4",
+      "elapsed_seconds": 4140.8,
+      "n_slices": 28
+    }
+  ],
+  "upstream_commit_expected": "9b7776f33f6d581665a2d91ca9abbe628a9d9eaa",
+  "upstream_commit_actual": "9b7776f33f6d581665a2d91ca9abbe628a9d9eaa",
+  "data_splits": {
+    "training_pool_slices": 960,
+    "selected_budget_per_list": 28,
+    "validation_slices": 353,
+    "test_slices": 529,
+    "test_cases": 30
+  },
+  "training": {
+    "seeds": [
+      1233,
+      1234
+    ],
+    "number_of_runs": 10,
+    "epochs": 300,
+    "batch_size": 16,
+    "n_gpu": 1,
+    "img_size": 512,
+    "base_lr": 0.0008,
+    "vit_name": "vit_b_new",
+    "rank": 32,
+    "model_scale": 1.0,
+    "checkpoint_selection": "best validation Dice at epochs 100, 200, or 300"
+  },
+  "shared_uncertainty_prior": {
+    "path": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/shared_uncertainty/uncertainty_10_avg.pkl",
+    "source": "mean of cached uncertainty maps from all five selection runs, training pool only",
+    "number_of_maps": 4800,
+    "maps_per_selection_run": {
+      "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/reference/uncertainty": 960,
+      "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_1/uncertainty": 960,
+      "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_2/uncertainty": 960,
+      "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_3/uncertainty": 960,
+      "/work/ATDL3/results/selection_stability/run_20261103T113007Z/cache/rerun_4/uncertainty": 960
+    },
+    "shape": [
+      256,
+      256
+    ],
+    "dtype": "float32"
+  },
+  "upstream_inference_patch": {
+    "status": "already_patched",
+    "path": "/work/ATDL3/repos/SUGFW-plus/MA-SAM-un/inference.py"
+  },
+  "interpretation": "The same training seeds are used for all five selection lists. The crossed list-by-seed design supports descriptive comparison of between-list and within-list training-seed variation. With only two training seeds, the training variance estimate remains imprecise. Bootstrap CIs are over held-out test cases, not training seeds.",
+  "arms": {
+    "reference": {
+      "training_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/reference/train_data/splits/train.csv",
+      "n_training_slices": 28,
+      "seeds": {
+        "1233": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/reference/seed_1233/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/reference/seed_1233/test_metrics.csv",
+          "summary": {
+            "selection_set": "reference",
+            "training_seed": 1233,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8220066666666668,
+            "mean_test_dice_percent": 82.20066666666668,
+            "sd_test_dice": 0.06849828053886908,
+            "sd_test_dice_percentage_points": 6.849828053886908,
+            "dice_bootstrap_95ci_low": 0.7968759999999999,
+            "dice_bootstrap_95ci_high": 0.8453736666666667,
+            "dice_bootstrap_95ci_low_percent": 79.68759999999999,
+            "dice_bootstrap_95ci_high_percent": 84.53736666666667,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 13.928830000000001,
+            "sd_hd95_voxels": 17.287555336997727,
+            "hd95_bootstrap_95ci_low": 8.606977583333332,
+            "hd95_bootstrap_95ci_high": 20.758392333333333
+          }
+        },
+        "1234": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/reference/seed_1234/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/reference/seed_1234/test_metrics.csv",
+          "summary": {
+            "selection_set": "reference",
+            "training_seed": 1234,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8102166666666666,
+            "mean_test_dice_percent": 81.02166666666666,
+            "sd_test_dice": 0.1039366056233594,
+            "sd_test_dice_percentage_points": 10.39366056233594,
+            "dice_bootstrap_95ci_low": 0.7686459999999999,
+            "dice_bootstrap_95ci_high": 0.8418075833333335,
+            "dice_bootstrap_95ci_low_percent": 76.8646,
+            "dice_bootstrap_95ci_high_percent": 84.18075833333334,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 19.063953333333334,
+            "sd_hd95_voxels": 26.90969331714085,
+            "hd95_bootstrap_95ci_low": 11.204778416666668,
+            "hd95_bootstrap_95ci_high": 29.886833916666667
+          }
+        }
+      }
+    },
+    "rerun_1": {
+      "training_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_1/train_data/splits/train.csv",
+      "n_training_slices": 28,
+      "seeds": {
+        "1233": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_1/seed_1233/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_1/seed_1233/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_1",
+            "training_seed": 1233,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8282866666666666,
+            "mean_test_dice_percent": 82.82866666666666,
+            "sd_test_dice": 0.07276377809252932,
+            "sd_test_dice_percentage_points": 7.276377809252931,
+            "dice_bootstrap_95ci_low": 0.7995058333333336,
+            "dice_bootstrap_95ci_high": 0.8510135833333335,
+            "dice_bootstrap_95ci_low_percent": 79.95058333333336,
+            "dice_bootstrap_95ci_high_percent": 85.10135833333335,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 11.69546,
+            "sd_hd95_voxels": 11.340552215180766,
+            "hd95_bootstrap_95ci_low": 8.029746916666667,
+            "hd95_bootstrap_95ci_high": 16.033516416666657
+          }
+        },
+        "1234": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_1/seed_1234/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_1/seed_1234/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_1",
+            "training_seed": 1234,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8347233333333334,
+            "mean_test_dice_percent": 83.47233333333334,
+            "sd_test_dice": 0.06592477784060659,
+            "sd_test_dice_percentage_points": 6.592477784060659,
+            "dice_bootstrap_95ci_low": 0.8101494166666668,
+            "dice_bootstrap_95ci_high": 0.8559534166666667,
+            "dice_bootstrap_95ci_low_percent": 81.01494166666669,
+            "dice_bootstrap_95ci_high_percent": 85.59534166666667,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 14.394403333333335,
+            "sd_hd95_voxels": 24.37507715457262,
+            "hd95_bootstrap_95ci_low": 7.231836083333333,
+            "hd95_bootstrap_95ci_high": 23.86382933333333
+          }
+        }
+      }
+    },
+    "rerun_2": {
+      "training_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_2/train_data/splits/train.csv",
+      "n_training_slices": 28,
+      "seeds": {
+        "1233": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_2/seed_1233/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_2/seed_1233/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_2",
+            "training_seed": 1233,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8072233333333332,
+            "mean_test_dice_percent": 80.72233333333332,
+            "sd_test_dice": 0.06322408796377038,
+            "sd_test_dice_percentage_points": 6.322408796377038,
+            "dice_bootstrap_95ci_low": 0.7834054166666667,
+            "dice_bootstrap_95ci_high": 0.8275903333333334,
+            "dice_bootstrap_95ci_low_percent": 78.34054166666668,
+            "dice_bootstrap_95ci_high_percent": 82.75903333333335,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 14.466016666666667,
+            "sd_hd95_voxels": 15.33953819311352,
+            "hd95_bootstrap_95ci_low": 9.601101083333337,
+            "hd95_bootstrap_95ci_high": 20.236400833333335
+          }
+        },
+        "1234": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_2/seed_1234/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_2/seed_1234/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_2",
+            "training_seed": 1234,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.7646266666666666,
+            "mean_test_dice_percent": 76.46266666666665,
+            "sd_test_dice": 0.07055731313465392,
+            "sd_test_dice_percentage_points": 7.055731313465392,
+            "dice_bootstrap_95ci_low": 0.7398328333333336,
+            "dice_bootstrap_95ci_high": 0.7889466666666666,
+            "dice_bootstrap_95ci_low_percent": 73.98328333333336,
+            "dice_bootstrap_95ci_high_percent": 78.89466666666665,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 9.956529999999999,
+            "sd_hd95_voxels": 10.647435537972319,
+            "hd95_bootstrap_95ci_low": 6.709325416666666,
+            "hd95_bootstrap_95ci_high": 14.27597375
+          }
+        }
+      }
+    },
+    "rerun_3": {
+      "training_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_3/train_data/splits/train.csv",
+      "n_training_slices": 28,
+      "seeds": {
+        "1233": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_3/seed_1233/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_3/seed_1233/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_3",
+            "training_seed": 1233,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8337333333333333,
+            "mean_test_dice_percent": 83.37333333333333,
+            "sd_test_dice": 0.05124758250535998,
+            "sd_test_dice_percentage_points": 5.124758250535998,
+            "dice_bootstrap_95ci_low": 0.8148556666666666,
+            "dice_bootstrap_95ci_high": 0.8506871666666667,
+            "dice_bootstrap_95ci_low_percent": 81.48556666666667,
+            "dice_bootstrap_95ci_high_percent": 85.06871666666666,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 14.128993333333332,
+            "sd_hd95_voxels": 14.087819459228463,
+            "hd95_bootstrap_95ci_low": 9.443106333333334,
+            "hd95_bootstrap_95ci_high": 19.312282083333333
+          }
+        },
+        "1234": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_3/seed_1234/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_3/seed_1234/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_3",
+            "training_seed": 1234,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8177666666666666,
+            "mean_test_dice_percent": 81.77666666666667,
+            "sd_test_dice": 0.06142506134241578,
+            "sd_test_dice_percentage_points": 6.142506134241578,
+            "dice_bootstrap_95ci_low": 0.7956400000000001,
+            "dice_bootstrap_95ci_high": 0.8387215000000002,
+            "dice_bootstrap_95ci_low_percent": 79.56400000000001,
+            "dice_bootstrap_95ci_high_percent": 83.87215000000002,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 15.788953333333334,
+            "sd_hd95_voxels": 17.0939296872378,
+            "hd95_bootstrap_95ci_low": 10.123866583333335,
+            "hd95_bootstrap_95ci_high": 22.103261416666662
+          }
+        }
+      }
+    },
+    "rerun_4": {
+      "training_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_4/train_data/splits/train.csv",
+      "n_training_slices": 28,
+      "seeds": {
+        "1233": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_4/seed_1233/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_4/seed_1233/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_4",
+            "training_seed": 1233,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.8229066666666667,
+            "mean_test_dice_percent": 82.29066666666667,
+            "sd_test_dice": 0.07329820966592489,
+            "sd_test_dice_percentage_points": 7.3298209665924885,
+            "dice_bootstrap_95ci_low": 0.7961364166666666,
+            "dice_bootstrap_95ci_high": 0.8475667500000001,
+            "dice_bootstrap_95ci_low_percent": 79.61364166666665,
+            "dice_bootstrap_95ci_high_percent": 84.75667500000002,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 7.741773333333333,
+            "sd_hd95_voxels": 8.325174082095545,
+            "hd95_bootstrap_95ci_low": 5.130094083333334,
+            "hd95_bootstrap_95ci_high": 10.899411166666663
+          }
+        },
+        "1234": {
+          "status": "complete",
+          "checkpoint": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_4/seed_1234/model/train_best_model.pth",
+          "test_metrics_csv": "/work/ATDL3/results/selection_stability/fine_tuning/run_20261103T190916Z/rerun_4/seed_1234/test_metrics.csv",
+          "summary": {
+            "selection_set": "rerun_4",
+            "training_seed": 1234,
+            "n_training_slices": 28,
+            "n_test_cases": 30,
+            "mean_test_dice": 0.7843866666666668,
+            "mean_test_dice_percent": 78.43866666666668,
+            "sd_test_dice": 0.09300091854694076,
+            "sd_test_dice_percentage_points": 9.300091854694076,
+            "dice_bootstrap_95ci_low": 0.75051975,
+            "dice_bootstrap_95ci_high": 0.8149037499999998,
+            "dice_bootstrap_95ci_low_percent": 75.051975,
+            "dice_bootstrap_95ci_high_percent": 81.49037499999999,
+            "n_hd95_valid_cases": 30,
+            "n_hd95_undefined_cases": 0,
+            "mean_hd95_voxels": 7.3384866666666655,
+            "sd_hd95_voxels": 7.307048387391324,
+            "hd95_bootstrap_95ci_low": 5.039630333333332,
+            "hd95_bootstrap_95ci_high": 10.144628333333335
+          }
+        }
+      }
+    }
+  },
+  "completed_utc": "2026-11-03T22:05:59Z",
+  "status": "complete"
+}

@@ -1,0 +1,13 @@
+{
+  "completed_utc": "2026-11-03T22:05:59Z",
+  "status": "complete",
+  "mean_of_five_list_mean_dice": 0.8125876666666667,
+  "sd_across_five_list_mean_dice": 0.01826451730815794,
+  "n_selection_lists": 5,
+  "training_seeds": [
+    1233,
+    1234
+  ],
+  "mean_within_list_sd_across_training_seeds": 0.016307296587724177,
+  "warning": "Between-list and training-seed spreads are descriptive. Two seeds per list are enough for a small variance comparison but provide an imprecise estimate of training variance. Bootstrap CIs are over test cases, not training seeds."
+}
