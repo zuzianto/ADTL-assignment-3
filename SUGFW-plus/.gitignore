@@ -1,0 +1,14 @@
+data/*
+checkpoint/*
+SUGFW_plus.egg-info
+# Local environments
+.venv*/
+**/__pycache__/
+*.py[cod]
+
+# Training and testing logs
+MA-SAM-un/training_log/
+MA-SAM-un/testing_log/
+
+# Exclude datasets
+data/
